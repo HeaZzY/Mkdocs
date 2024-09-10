@@ -1,3 +1,7 @@
+---
+title: "Configuration des Interfaces"
+---
+
 # Page de configuration des Interfaces
 
 # Contexte 
@@ -15,3 +19,4 @@ GigabitEthernet1/0/2 => Access 240
 GigabitEthernet1/0/3 => Access 240
 
 # Configuration du cisco 9200L
+

@@ -1,6 +1,8 @@
 # Addressage
-
-Pour le site de chartres nous avons l'addressage suivante: 
+---
+title: "Adressage du réseau"
+---
+Pour le site de chartres nous avons l'addressage suivante:
 172.28.96.0 -> 172.28.127.255
 
 # Vlans
