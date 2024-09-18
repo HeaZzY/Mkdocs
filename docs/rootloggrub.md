@@ -25,7 +25,7 @@ Une fois fais il suffit de faire F10 pour reboot avec ces paramètres grub.
 # Une fois connecter en root faites ceci pour modifier son mot de passe
 
 ```bash
-passd root
+passwd root
 ```
 Saisissez les informations
 
