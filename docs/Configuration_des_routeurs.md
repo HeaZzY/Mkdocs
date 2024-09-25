@@ -4,13 +4,16 @@ title: "Configuration des routeurs"
 
 # Configuration des routeurs de chartres
 
+## Addresse VIP
+192.168.248.254
+
 ## Configurations des interfaces
 
 ### Pour CHA_RT1
 | Interface               | Encapsulation | IP Address           | Masque de sous-réseau | NAT       |
 |-------------------------|---------------|----------------------|-----------------------|-----------|
 | GigabitEthernet0/0.1     | dot1Q 240     | 172.28.127.3          | 255.255.255.0         | Non       |
-| GigabitEthernet0/0.248   | dot1Q 248     | 192.168.248.254       | 255.255.255.0         | Inside    |
+| GigabitEthernet0/0.248   | dot1Q 248     | 192.168.248.253       | 255.255.255.0         | Inside    |
 | GigabitEthernet0/1       | N/A           | 183.44.28.1           | 255.255.255.0         | Outside   |
 
 
@@ -21,8 +24,8 @@ title: "Configuration des routeurs"
 | Interface               | Encapsulation | IP Address           | Masque de sous-réseau | NAT       |
 |-------------------------|---------------|----------------------|-----------------------|-----------|
 | GigabitEthernet0/0.1     | dot1Q 240     | 172.28.127.4          | 255.255.255.0         | Non       |
-| GigabitEthernet0/0.248   | dot1Q 248     | 192.168.248.253       | 255.255.255.0         | Non       |
-| GigabitEthernet0/1       | N/A           | 221.87.128.2          | 255.255.255.0         | Non       |
+| GigabitEthernet0/0.248   | dot1Q 248     | 192.168.248.252       | 255.255.255.0         | Inside       |
+| GigabitEthernet0/1       | N/A           | 221.87.128.2          | 255.255.255.0         | Outside       |
 
 
 ## Tables de routage
@@ -30,12 +33,8 @@ title: "Configuration des routeurs"
 | Destination     | Masque de sous-réseau | Prochain saut   | Interface            |
 |-----------------|-----------------------|-----------------|----------------------|
 | 0.0.0.0         | 0.0.0.0               | 183.44.28.2      | GigabitEthernet0/1    |
-| 172.28.96.0     | 255.255.255.0          | 192.168.248.1    | GigabitEthernet0/0.248 |
-| 172.28.97.0     | 255.255.255.0          | 192.168.248.1    | GigabitEthernet0/0.248 |
-| 172.28.98.0     | 255.255.255.0          | 192.168.248.1    | GigabitEthernet0/0.248 |
-| 172.28.99.0     | 255.255.255.0          | 192.168.248.1    | GigabitEthernet0/0.248 |
-| 172.28.100.0    | 255.255.255.0          | 192.168.248.1    | GigabitEthernet0/0.248 |
-| 172.28.101.0    | 255.255.255.0          | 192.168.248.1    | GigabitEthernet0/0.248 |
+| 172.28.96.0     | 255.255.224.0          | 192.168.248.10   | GigabitEthernet0/0.248 |
+
 
 
 ## Configuration du NAT
