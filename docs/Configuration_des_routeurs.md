@@ -2,64 +2,54 @@
 title: "Configuration des routeurs"
 ---
 
-# Configuration des routeurs de chartres
+# Informations générales du routeur 1 (CHA_RT1)
 
-## Addresse VIP
-192.168.248.254
+| **Paramètre**              | **Valeur**                                          |
+|----------------------------|----------------------------------------------------|
+| **Version**                 | 15.1                                               |
+| **Nom de domaine**          | `sportludique.fr`                                  |
+| **Hostname**                | CHA_RT1                                            |
+| **Utilisateur 1**           | `mathys` (privilege 15, mot de passe chiffré)      |
+| **Utilisateur 2**           | `seb` (privilege 15, mot de passe chiffré)         |
+| **IP LAN principale**       | 192.168.248.252 (GigabitEthernet0/0.248)           |
+| **IP LAN secondaire**       | 10.10.240.3 (GigabitEthernet0/0.240)               |
+| **IP WAN**                  | 183.44.28.1 (GigabitEthernet0/1)                   |
+| **VIP (haute dispo)**       | 192.168.248.254 (partagé avec CHA_RT2)             |
 
-## Configurations des interfaces
+# Interfaces du routeur 1 (CHA_RT1)
 
-### Pour CHA_RT1
-| Interface               | Encapsulation | IP Address           | Masque de sous-réseau | NAT       |
-|-------------------------|---------------|----------------------|-----------------------|-----------|
-| GigabitEthernet0/0.1     | dot1Q 240     | 172.28.127.3          | 255.255.255.0         | Non       |
-| GigabitEthernet0/0.248   | dot1Q 248     | 192.168.248.253       | 255.255.255.0         | Inside    |
-| GigabitEthernet0/1       | N/A           | 183.44.28.1           | 255.255.255.0         | Outside   |
+| **Interface**               | **IP**                           | **Description**                    |
+|-----------------------------|----------------------------------|------------------------------------|
+| Embedded-Service-Engine0/0   | Aucune                          | Désactivée                         |
+| GigabitEthernet0/0.240       | 10.10.240.3 /24                 | VLAN 240                           |
+| GigabitEthernet0/0.248       | 192.168.248.252 /24             | LAN principale, avec VIP           |
+| GigabitEthernet0/1           | 183.44.28.1 /30                 | WAN                                |
+| Serial0/1/0                  | Aucune                          | Désactivée                         |
 
+# Configuration NAT du routeur 1 (CHA_RT1)
 
+| **NAT Source**              | **Interface**                    | **Description**                    |
+|-----------------------------|----------------------------------|------------------------------------|
+| Access-list 1               | GigabitEthernet0/1               | NAT overload pour 192.168.248.0/24 |
+| Access-list 2               | GigabitEthernet0/1               | NAT overload pour 172.28.96.0/19   |
+| Access-list 3               | GigabitEthernet0/1               | NAT overload pour 192.168.43.0/24  |
+| Access-list 4               | GigabitEthernet0/1               | NAT overload pour 192.168.28.0/24  |
+| Access-list 5               | GigabitEthernet0/1               | NAT overload pour 192.168.128.0/24 |
 
+# Routes statiques du routeur 1 (CHA_RT1)
 
-### Pour CHA_RT2
+| **Destination**             | **Next-hop**                     | **Description**                    |
+|-----------------------------|----------------------------------|------------------------------------|
+| 0.0.0.0/0                   | 183.44.28.2                      | Route par défaut                   |
+| 172.28.96.0/19              | 192.168.248.10                   | Route pour le VLAN 245             |
+| 192.168.28.0/24             | 192.168.248.10                   | Route spécifique                   |
+| 192.168.43.0/24             | 192.168.248.10                   | Route spécifique                   |
+| 192.168.128.0/24            | 192.168.248.10                   | Route spécifique                   |
 
-| Interface               | Encapsulation | IP Address           | Masque de sous-réseau | NAT       |
-|-------------------------|---------------|----------------------|-----------------------|-----------|
-| GigabitEthernet0/0.1     | dot1Q 240     | 172.28.127.4          | 255.255.255.0         | Non       |
-| GigabitEthernet0/0.248   | dot1Q 248     | 192.168.248.252       | 255.255.255.0         | Inside       |
-| GigabitEthernet0/1       | N/A           | 221.87.128.2          | 255.255.255.0         | Outside       |
+# Informations du routeur 2 (CHA_RT2)
 
-
-## Tables de routage
-
-| Destination     | Masque de sous-réseau | Prochain saut   | Interface            |
-|-----------------|-----------------------|-----------------|----------------------|
-| 0.0.0.0         | 0.0.0.0               | 183.44.28.2      | GigabitEthernet0/1    |
-| 172.28.96.0     | 255.255.224.0          | 192.168.248.10   | GigabitEthernet0/0.248 |
-
-
-
-## Configuration du NAT
-| NAT ID | Source List         | Interface             | Overload |
-|--------|---------------------|-----------------------|----------|
-| 1      | access-list 1        | GigabitEthernet0/1    | Oui      |
-| 2      | access-list 2        | GigabitEthernet0/1    | Oui      |
-| 3      | access-list 3        | GigabitEthernet0/1    | Oui      |
-| 4      | access-list 4        | GigabitEthernet0/1    | Oui      |
-| 5      | access-list 5        | GigabitEthernet0/1    | Oui      |
-| 6      | access-list 6        | GigabitEthernet0/1    | Oui      |
-| 7      | access-list 7        | GigabitEthernet0/1    | Oui      |
-
-
-## Configurations des ACL
-
-| ACL  | Réseau autorisé      | Masque Inversé      |
-|------|----------------------|---------------------|
-| 1    | 192.168.248.0        | 0.0.0.255           |
-| 2    | 172.28.96.0          | 0.0.0.255           |
-| 3    | 172.28.97.0          | 0.0.0.255           |
-| 4    | 172.28.98.0          | 0.0.0.255           |
-| 5    | 172.28.99.0          | 0.0.0.255           |
-| 6    | 172.28.100.0         | 0.0.0.255           |
-| 7    | 172.28.101.0         | 0.0.0.255           |
-
-
-
+| **Paramètre**               | **Valeur**                                          |
+|-----------------------------|----------------------------------------------------|
+| **Hostname**                | CHA_RT2                                            |
+| **IP LAN principale**       | 192.168.248.253 (GigabitEthernet0/0.248)           |
+| **VIP (haute dispo)**       | 192.168.248.254 (partagé avec CHA_RT1)             |
