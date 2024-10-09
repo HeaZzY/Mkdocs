@@ -1,4 +1,4 @@
-# Ajouter un serveur dans la DMZ publique
+# Ajout de serveur DMZ Publique
 
 ## Objectif
 Configurer un serveur dans la DMZ publique avec deux passerelles : 
