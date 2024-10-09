@@ -4,6 +4,7 @@ title: "Configurations des ports"
 
 # Configuration des Ports du SERVEUR PROXMOX
 
+
 ### Port eno1
 - **Type :** Access
 - **Switch :** HUAWEI PROXMOX
@@ -43,21 +44,13 @@ Les VLANs suivants utilisent `bond1` comme périphérique support :
 ### Linux Bridge
 *Ces interfaces permettent aux machines virtuelles d'utiliser les VLANs spécifiques pour la communication réseau.*
 
-- **DMZ_Priv**
-  - **Ports :** VLAN 241
-  - **Commentaire :** Interface pour les machines virtuelles nécessitant un accès à la zone privée de la DMZ.
+| **Nom du Bridge** | **VLAN**    | **Description**                                                 |
+|-------------------|-------------|-----------------------------------------------------------------|
+| **DMZ_Priv**       | VLAN 241    | Interface pour les machines virtuelles ayant accès à la zone privée de la DMZ. |
+| **DMZ_Pub**        | VLAN 244    | Interface pour les machines virtuelles ayant accès à la zone publique de la DMZ. |
+| **MANAGEMENT**     | VLAN 240    | Interface dédiée à la gestion des machines virtuelles et des ressources. |
+| **SERVEUR**        | VLAN 242    | Interface pour les serveurs virtuels utilisant le VLAN service. |
 
-- **DMZ_Pub**
-  - **Ports :** VLAN 244
-  - **Commentaire :** Interface pour les machines virtuelles nécessitant un accès à la zone publique de la DMZ.
-
-- **MANAGEMENT**
-  - **Ports :** VLAN 240
-  - **Commentaire :** Interface dédiée pour la gestion des machines virtuelles et des ressources.
-
-- **SERVEUR**
-  - **Ports :** VLAN 242
-  - **Commentaire :** Interface pour les serveurs virtuels utilisant le VLAN service.
-
+### Image Proxmox :
 ![Configuration des ports](../../images/conf_ports.png)
 

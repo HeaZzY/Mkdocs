@@ -1,4 +1,4 @@
-# Présentation du Projet : Gestion du site de Chartres
+# Présentation du Projet
 
 ---
 
