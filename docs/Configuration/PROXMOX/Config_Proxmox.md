@@ -59,4 +59,4 @@ Les VLANs suivants utilisent `bond1` comme périphérique support :
   - **Ports :** VLAN 242
   - **Commentaire :** Interface pour les serveurs virtuels utilisant le VLAN service.
 
-![Image conf ports PROXMOX](mkdocs/docs/images/conf_ports.png)
+![Ports PROXMOX :](Mkdocs/docs/images/conf_ports.png)

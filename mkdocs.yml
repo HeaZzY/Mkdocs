@@ -1,17 +1,19 @@
 site_name: Documentation site de CHARTRES
 theme:
   name: material
-  language: fr
+  language: fr 
   palette:
-    - scheme: slate 
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
-      primary: "#C70039"  
-      accent: "#FF5733"  
-    - scheme: default
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: light-blue
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-      primary: "##900C3F"  
-      accent: "#FF5733"   
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep-orange
+      accent: light-blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
