@@ -6,7 +6,7 @@ theme:
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: blue
-      accent: light-blue
+      accent: deep-orange
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
