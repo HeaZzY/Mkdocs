@@ -7,11 +7,11 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
-      primary: "#0d3256"  # Bleu personnalisé (remplace par le code hex que tu veux)
-      accent: "#0c6dd6"   # Lime personnalisé (ou n'importe quelle couleur)
+      primary: "#0cd60f"  
+      accent: "#d7e100"  
     - scheme: default
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
-      primary: "#0d3256"  
-      accent: "#0c6dd6"   
+      primary: "#04ae07"  
+      accent: "#d7e100"   
